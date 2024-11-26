@@ -30,3 +30,15 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: echo "Hello ${{ inputs.name }}"
+
+jobs:
+  # This workflow contains a single job called "greet"
+  dfh:
+    # The type of runner that the job will run on
+    runs-on: osboxes2
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Runs a single command using the runners shell
+    - name: df -h
+      run: df -h
