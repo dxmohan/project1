@@ -30,8 +30,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
-    - name: df -h
+    - name: Disk Usage
       run: |
-      df -k
+      df -h
       uname -a
       ls -lrt /etc/lsb*
