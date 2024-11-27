@@ -35,5 +35,6 @@ jobs:
        df -h
        uname -a 
        ip a
+       ls -lrt /etc/lsb*
        
       
