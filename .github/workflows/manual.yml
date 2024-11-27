@@ -32,6 +32,8 @@ jobs:
     # Runs a single command using the runners shell
     - name: Disk Usage
       run: |
-      df -h
-      uname -a
-      ls -lrt /etc/lsb*
+       df -h
+       uname -a 
+       ip a
+       
+      
