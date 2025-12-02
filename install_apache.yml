@@ -1,0 +1,11 @@
+---
+
+- hosts: 10.1.1.2
+  gather_facts: no
+  tasks:
+    
+    - name: Install apache2 package
+      apt:
+        name: apache2
+        state: absent
+
