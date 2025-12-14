@@ -1,6 +1,6 @@
 ---
 
-- hosts: osboxes3
+- hosts: 10.1.1.3
   gather_facts: no
   tasks:
     
