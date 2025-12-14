@@ -1,6 +1,6 @@
 ---
 
-- hosts: osboxes3
+- hosts: osboxes4
   gather_facts: no
   tasks:
     
