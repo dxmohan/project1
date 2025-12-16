@@ -30,13 +30,13 @@
       ansible.builtin.command: id
       register: current_id
 
-    - name: Print ids
-      ansible.builtin.debug:
-        msg: "The id : {{ current_id.stdout }}"
-
-    - name: List
-      ansible.builtin.command: ls -lrt
-      register: file_list
+    - name: Copy config file to destination
+      ansible.builtin.copy:
+        src: files/config.conf # Path relative to the root of your Git repo
+        dest: /etc/config.conf # Destination path on the remote server
+        owner: root
+        group: root
+        mode: '0644'
 
     - name: Print List
       ansible.builtin.debug:
