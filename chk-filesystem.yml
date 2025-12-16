@@ -33,4 +33,12 @@
     - name: Print ids
       ansible.builtin.debug:
         msg: "The id : {{ current_id.stdout }}"
+
+     - name: List
+      ansible.builtin.command: ls -lrt
+      register: file_list
+
+    - name: Print List
+      ansible.builtin.debug:
+        msg: " {{ file_list.stdout }}"
     
