@@ -16,3 +16,12 @@
     - name: Debug available space
       ansible.builtin.debug:
         msg: "Root free space: {{ root_mount.size_available | human_readable }}"
+
+    - name: Run df -h command
+      ansible.builtin.command: df -h
+      register: disk_usage_output
+      # The 'command' module takes free-form arguments
+
+    - name: Print the command output
+      ansible.builtin.debug:
+        msg: "{{ disk_usage_output.stdout }}"
