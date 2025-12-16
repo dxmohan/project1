@@ -34,7 +34,7 @@
       ansible.builtin.debug:
         msg: "The id : {{ current_id.stdout }}"
 
-     - name: List
+    - name: List
       ansible.builtin.command: ls -lrt
       register: file_list
 
