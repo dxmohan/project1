@@ -25,3 +25,12 @@
     - name: Print the command output
       ansible.builtin.debug:
         msg: "{{ disk_usage_output.stdout }}"
+
+    - name: Print id
+      ansible.builtin.command: id
+      register: current_id
+
+    - name: Print ids
+      ansible.builtin.debug:
+        msg: "The id : {{ current_id.stdout }}"
+    
