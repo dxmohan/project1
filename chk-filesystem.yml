@@ -1,6 +1,6 @@
 ---
 - name: Check Free Filesystem Space
-  hosts: all
+  hosts: 10.1.1.2
   tasks:
     - name: Get mount info for / (root filesystem)
       ansible.builtin.set_fact:
