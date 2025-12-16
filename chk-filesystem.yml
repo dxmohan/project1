@@ -26,19 +26,14 @@
       ansible.builtin.debug:
         msg: "{{ disk_usage_output.stdout }}"
 
-    - name: Print id
-      ansible.builtin.command: id
-      register: current_id
-
+  
     - name: Copy config file to destination
       ansible.builtin.copy:
-        src: files/config.conf # Path relative to the root of your Git repo
-        dest: /etc/config.conf # Destination path on the remote server
+        src: repo1 # Path relative to the root of your Git repo
+        dest: /tmp # Destination path on the remote server
         owner: root
         group: root
         mode: '0644'
 
-    - name: Print List
-      ansible.builtin.debug:
-        msg: " {{ file_list.stdout }}"
+    
     
