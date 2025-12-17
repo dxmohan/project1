@@ -18,6 +18,6 @@
 
     - name: Display command output
       ansible.builtin.debug:
-      var: command_output.stdout
+        var: command_output.stdout
     
     
