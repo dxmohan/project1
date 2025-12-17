@@ -2,30 +2,7 @@
 - name: Check Free Filesystem Space
   hosts: 10.1.1.2
   tasks:
-    - name: Get mount info for / (root filesystem)
-      ansible.builtin.set_fact:
-        root_mount: "{{ ansible_mounts | selectattr('mount', 'equalto', '/') | list | first }}"
-
-    - name: Assert free space on root filesystem (e.g., > 5GB)
-      ansible.builtin.assert:
-        that:
-          - root_mount.size_available > 5 * 1024 * 1024 * 1024 # 5GB in bytes
-        fail_msg: "Root filesystem has less than 5GB free!"
-        success_msg: "Root filesystem has sufficient free space."
-
-    - name: Debug available space
-      ansible.builtin.debug:
-        msg: "Root free space: {{ root_mount.size_available | human_readable }}"
-
-    - name: Run df -h command
-      ansible.builtin.command: df -h
-      register: disk_usage_output
-      # The 'command' module takes free-form arguments
-
-    - name: Print the command output
-      ansible.builtin.debug:
-        msg: "{{ disk_usage_output.stdout }}"
-
+    
   
     - name: Copy config file to destination
       ansible.builtin.copy:
