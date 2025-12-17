@@ -1,0 +1,12 @@
+---
+- name: Check Free Filesystem Space
+  hosts: 10.1.1.2
+  tasks:
+        
+    - name: Run uptime command
+      ansible.builtin.command: uptime
+      register: command_output
+
+    - name: Display command output
+      ansible.builtin.debug:
+        var: command_output.stdout
