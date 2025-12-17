@@ -13,8 +13,8 @@
         mode: '0644'
 
      - name: Run date command
-      ansible.builtin.command: date
-      register: command_output
+       ansible.builtin.command: date
+       register: command_output
 
     - name: Display command output
       ansible.builtin.debug:
