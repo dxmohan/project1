@@ -1,40 +1,38 @@
-# This is a basic workflow that is manually triggered
+name: M2U File Transfer
 
-name: Manual workflow
 
-# Controls when the action will run. Workflow runs when manually triggered using the UI
-# or API.
 on:
   workflow_dispatch:
     
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "greet"
-  greet:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+ 
+  Cleanup:
+    runs-on: ubuntu2
     steps:
-    # Runs a single command using the runners shell
-    - name: Send greeting
-      run: echo "Hello boss!!!!"
-
-
-  # This workflow contains a single job called "greet"
-  dfh:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-    # Runs a single command using the runners shell
-    - name: Disk Usage
+    - name: Cleanup work space directory
       run: |
-       df -h
-       uname -a 
-       ip a
-       ls -lrt /etc/lsb*
-       
-      
+       echo "Branch: $GITHUB_REF_NAME"
+       rm -rf $GITHUB_WORKSPACE
+       mkdir -p $GITHUB_WORKSPACE
+       ls -ld $GITHUB_WORKSPACE
+        
+    - name: Checkout destination repository
+      uses: actions/checkout@v4
+
+    - name: Copy the repo to /app
+      run: |
+       echo "Branch: $GITHUB_REF_NAME"
+       ls -lrtR $GITHUB_WORKSPACE
+       cp -rp $GITHUB_WORKSPACE /app
+   
+          
+  Copy:
+    needs: greet
+    runs-on: ubuntu2
+
+    steps:
+    - name: System Info
+      run: |
+        cp -rp /app/bv_data /root/
+        cp -p /app/checksum1 /root/
