@@ -23,16 +23,17 @@ jobs:
     - name: Copy the repo to /app
       run: |
        echo "Branch: $GITHUB_REF_NAME"
+       echo " WORKSPACE = $GITHUB_WORKSPACE"
        ls -lrtR $GITHUB_WORKSPACE
-       cp -rp $GITHUB_WORKSPACE /app
+       #cp -rp $GITHUB_WORKSPACE /app
    
           
-  Copy:
-    needs: Cleanup
-    runs-on: ubuntu2
+#  Copy:
+#    needs: Cleanup
+#    runs-on: ubuntu2
 
-    steps:
-    - name: System Info
-      run: |
-        cp -rp /app/bv_data /root/
-        cp -p /app/checksum1 /root/
+#    steps:
+#    - name: System Info
+#      run: |
+#        cp -rp /app/bv_data /root/
+#        cp -p /app/checksum1 /root/
