@@ -34,7 +34,6 @@ jobs:
     runs-on: ubuntu2
 
     steps:
-    - name: System Info
+    - name: Check Repo 
       run: |
-        cp -rp /app/bv_data /root/
-        cp -p /app/checksum1 /root/
+        ls -lrtR /app
