@@ -28,12 +28,12 @@ jobs:
        #cp -rp $GITHUB_WORKSPACE /app
    
           
-#  Copy:
-#    needs: Cleanup
-#    runs-on: ubuntu2
+  Copy:
+    needs: Cleanup
+    runs-on: ubuntu2
 
-#    steps:
-#    - name: System Info
-#      run: |
-#        cp -rp /app/bv_data /root/
-#        cp -p /app/checksum1 /root/
+    steps:
+    - name: System Info
+      run: |
+        cp -rp $GITHUB_WORKSPACE/bv_data /root/
+        cp -p $GITHUB_WORKSPACE/checksum1 /root/
