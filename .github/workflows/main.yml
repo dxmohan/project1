@@ -1,0 +1,39 @@
+name: M2U File Transfer
+
+
+on:
+  workflow_dispatch:
+    
+
+
+jobs:
+ 
+  Cleanup:
+    runs-on: ubuntu2
+    
+    - name: Cleanup work space directory.
+      run: |
+       echo "Branch: $GITHUB_REF_NAME"
+       rm -rf $GITHUB_WORKSPACE
+       mkdir -p $GITHUB_WORKSPACE
+       ls -ld $GITHUB_WORKSPACE
+        
+    - name: Checkout destination repository
+      uses: actions/checkout@v4
+
+    - name: Copy the repo to /app
+      run: |
+       echo "Branch: $GITHUB_REF_NAME"
+       ls -lrtR $GITHUB_WORKSPACE
+       cp -rp $GITHUB_WORKSPACE /app
+   
+          
+  Copy:
+    needs: greet
+    runs-on: ubuntu2
+
+    steps:
+    - name: System Info
+      run: |
+        cp -rp /app/bv_data /root/
+        cp -p /app/checksum1 /root/
