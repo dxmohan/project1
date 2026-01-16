@@ -7,7 +7,7 @@ on:
 
 jobs:
  
-  Cleanup:
+  Cleanup-Workspce:
     runs-on: ubuntu2
     steps:
     - name: Cleanup work space directory
@@ -16,20 +16,34 @@ jobs:
        rm -rf $GITHUB_WORKSPACE
        mkdir -p $GITHUB_WORKSPACE
        ls -ld $GITHUB_WORKSPACE
-        
-    - name: Checkout destination repository
-      uses: actions/checkout@v4
+       
+  Cleanup-MigrationDir:
+    needs: Cleanup-Workspce
+    runs-on: ubuntu2
+    steps:
+    - name: Cleanup work space directory
+      run: |
+       echo "Branch: $GITHUB_REF_NAME"
+       rm -rf /root/bv_data /root/checksum1
+       
 
-    - name: Copy the repo to /app
+  Download-Repo:
+    needs: Cleanup-MigrationDir
+    runs-on: ubuntu2
+    steps:  
+    - name: Checkout destination repository
+      uses: actions/checkout@v3
+
+    - name: Check downloaded repo.
       run: |
        echo "Branch: $GITHUB_REF_NAME"
        echo " WORKSPACE = $GITHUB_WORKSPACE"
        ls -lrtR $GITHUB_WORKSPACE
-       #cp -rp $GITHUB_WORKSPACE /app
+       
    
           
-  Copy:
-    needs: Cleanup
+  Copy-Repo:
+    needs: Download-Repo
     runs-on: ubuntu2
 
     steps:
