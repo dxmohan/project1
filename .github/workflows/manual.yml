@@ -28,7 +28,7 @@ jobs:
    
           
   Copy:
-    needs: greet
+    needs: Cleanup
     runs-on: ubuntu2
 
     steps:
