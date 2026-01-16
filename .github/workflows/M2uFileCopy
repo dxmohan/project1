@@ -7,7 +7,8 @@ on:
 
 
 jobs:
- 
+
+ steps:
   Cleanup:
     runs-on: ubuntu2
     
