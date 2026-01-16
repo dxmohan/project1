@@ -8,9 +8,10 @@ on:
 
 jobs:
  
-  Cleanup:
+ 
+   Cleanup:
     runs-on: ubuntu2
-    
+    steps:
     - name: Cleanup work space directory.
       run: |
        echo "Branch: $GITHUB_REF_NAME"
@@ -29,7 +30,7 @@ jobs:
    
           
   Copy:
-    needs: greet
+    needs: Cleanup
     runs-on: ubuntu2
 
     steps:
