@@ -47,7 +47,15 @@ jobs:
     runs-on: ubuntu2
 
     steps:
-    - name: System Info
+    - name: Copy files to remote server
       run: |
         scp -rp $GITHUB_WORKSPACE/bv_data mohan@10.1.1.3
         scp -p $GITHUB_WORKSPACE/checksum1 mohan@10.1.1.3
+        
+     steps:
+     - name: Execute script
+       run: |
+         ssh mohan@10.1.1.3 "sudo /home/mohan/script1 123"
+         
+    
+     
