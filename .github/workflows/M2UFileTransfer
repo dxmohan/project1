@@ -47,4 +47,3 @@ jobs:
       run: |
         scp -rp $GITHUB_WORKSPACE/bv_data mohan@10.1.1.3
         scp -p $GITHUB_WORKSPACE/checksum1 mohan@10.1.1.3
-        echo "ssh mohan@10.1.1.3 \"sudo /home/mohan/script1\""
