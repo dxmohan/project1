@@ -1,4 +1,4 @@
-name: M2U File Transfer
+name: M2U File Copy
 
 on:
   workflow_dispatch:
