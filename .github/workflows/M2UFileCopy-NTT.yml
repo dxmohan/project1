@@ -41,7 +41,7 @@ jobs:
         ssh mohan@10.1.1.3 "sudo /home/mohan/script1 2"
         ssh mohan@10.1.1.3 "sudo /home/mohan/script1 3"
 
-  Copy-Repo-10.1.1.3:
+  Copy-Repo-10-1-1-3:
     needs: Download-Repo
     runs-on: ubuntu2
     steps:
