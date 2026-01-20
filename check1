@@ -1,0 +1,9 @@
+2021312283 258776 ./usr/sbin/visudo
+3480262141 18147 ./usr/sbin/update-rc.d
+1197889559 4076 ./usr/sbin/update-fonts-dir
+4254962560 4959 ./usr/sbin/ufw
+317550348 2931 ./usr/sbin/remove-default-wordlist
+3761881116 14648 ./usr/sbin/lpinfo
+3944369586 47712 ./usr/sbin/cupsfilter
+4294967295 0 ./file2
+4294967295 0 ./file1
