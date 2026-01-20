@@ -1,0 +1,50 @@
+name: M2UFileCopy-NTT
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Cleanup-Workspce:
+    runs-on: ubuntu2
+    steps:
+    - name: Cleanup work space directory
+      run: |
+       echo "Branch: $GITHUB_REF_NAME"
+       rm -rf $GITHUB_WORKSPACE
+       mkdir -p $GITHUB_WORKSPACE
+       ls -ld $GITHUB_WORKSPACE  
+
+  Download-Repo:
+    needs: Cleanup-Workspce
+    runs-on: ubuntu2
+    steps:
+    - name: Checkout destination repository
+      uses: actions/checkout@v3
+
+    - name: Check downloaded repo.
+      run: |
+       echo "Branch: $GITHUB_REF_NAME"
+       echo " WORKSPACE = $GITHUB_WORKSPACE"
+       ls -lrtR $GITHUB_WORKSPACE
+
+  Copy-Repo:
+    needs: Download-Repo
+    runs-on: ubuntu2
+    steps:
+    - name: Copy files to remote server
+      run: |
+        echo "Branch: $GITHUB_REF_NAME"
+        ssh mohan@10.1.1.3 "sudo /home/mohan/script1 4"
+        scp -rp $GITHUB_WORKSPACE/bv_data mohan@10.1.1.3:/home/mohan/
+        scp -p $GITHUB_WORKSPACE/checksum1 mohan@10.1.1.3:/home/mohan/
+        ssh mohan@10.1.1.3 "sudo /home/mohan/script1 1"
+        ssh mohan@10.1.1.3 "sudo /home/mohan/script1 2"
+        ssh mohan@10.1.1.3 "sudo /home/mohan/script1 3"
+
+  Copy-Repo-10.1.1.3:
+    needs: Download-Repo
+    runs-on: ubuntu2
+    steps:
+    - name: Copy files to remote server
+      run: |
+        echo "Branch: $GITHUB_REF_NAME"
