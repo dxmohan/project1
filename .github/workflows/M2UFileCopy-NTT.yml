@@ -45,6 +45,6 @@ jobs:
     needs: Download-Repo
     runs-on: ubuntu2
     steps:
-    - name: Copy files to remote server
+    - name: Copy files to remote server 10.1.1.3
       run: |
         echo "Branch: $GITHUB_REF_NAME"
