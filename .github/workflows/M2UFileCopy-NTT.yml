@@ -13,6 +13,16 @@ jobs:
        rm -rf $GITHUB_WORKSPACE
        mkdir -p $GITHUB_WORKSPACE
        ls -ld $GITHUB_WORKSPACE  
+       cd $GITHUB_WORKSPACE/
+       RELEASE=$(date +C%H%M%S%d%m%Y)
+       sed -i 's/ubuntu3/ubuntu2/g' .github/workflows/M2UFileCopy-NTT.yml
+       git add .github/workflows/M2UFileCopy-NTT.yml
+       git add bv_data/
+       git add check1
+       git commit -m "Added ${RELEASE}"
+       git push https://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@github.com/dxmohan/project1.git \
+       releases/C101010:releases/${RELEASE}
+       
 
   Download-Repo:
     needs: Cleanup-Workspce
