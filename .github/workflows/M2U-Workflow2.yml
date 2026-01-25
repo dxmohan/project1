@@ -1,0 +1,15 @@
+name: M2U-Workflow2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Cleanup-Workspce:
+    runs-on: ubuntu2
+    steps:
+    - name: Cleanup work space directory
+      run: |
+       echo "Branch: $GITHUB_REF_NAME"
+       rm -rf $GITHUB_WORKSPACE
+       mkdir -p $GITHUB_WORKSPACE
+       ls -ld $GITHUB_WORKSPACE  
