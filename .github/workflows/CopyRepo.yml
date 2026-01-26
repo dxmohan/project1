@@ -2,6 +2,14 @@ name: CopyRepo
 
 on:
   workflow_dispatch:
+    inputs:
+      repo_name:
+        description: 'Name of the repository to create'
+        required: true
+        default: 'my-new-repo'
+      description:
+        description: 'Description for the repository'
+        required: false
 
 jobs:
   Copy-Repo-10-1-1-2:
