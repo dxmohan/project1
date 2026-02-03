@@ -48,20 +48,8 @@ jobs:
     - name: Copy files to remote server 10.1.1.3
       run: |
         echo "Branch: $GITHUB_REF_NAME"
-
-        # Add the upstream repository as a remote
-        git remote add upstream https://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@github.com/dxmohan/project1.git
-          
-          # Fetch all branches and tags from upstream
-          git fetch upstream
-          
-          # Checkout the branch you want to sync (e.g., main or master)
-          git checkout releases/C202020
-          
-          # Merge the upstream changes into your branch
-          # --ff-only ensures a fast-forward merge for linear history
-          git merge upstream/main --ff-only
-          
-          # Push the updated branch back to your fork
-          # The default GITHUB_TOKEN has permission to push to the repo
-          git push origin releases/C202020
+        cd $GITHUB_WORKSPACE
+        git push https://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@github.com/dxmohan/project1.git releases/101010:releases/C101013
+        cd -
+        
+        
