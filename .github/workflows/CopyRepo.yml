@@ -35,7 +35,7 @@ jobs:
           
           # Push the changes to the destination repository using the PAT for authentication
           # Use a variable to prevent the PAT from being exposed in logs
-          REPO_URL="https://${{ secrets.PAT_TOKEN1 }}@://github.com/dxmohan/project1.git"
+          REPO_URL="https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project1.git"
           git push $REPO_URL releases/101010:releases/C101013 # Push local main to remote main, replace branch names as needed
    
        
