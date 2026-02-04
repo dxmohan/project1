@@ -31,10 +31,11 @@ jobs:
       # 3. Push to Destination
       - name: Push to Destination
         env:
-          DEST_TOKEN: ${{ secrets.PAT_TOKEN }}
+          DEST_TOKEN: ${{ secrets.PAT_TOKEN1 }}
         run: |
           # UPDATE THIS URL
-          DEST_URL="https://x-access-token:${DEST_TOKEN}@github.com/DEST_USERNAME/DEST_REPO_NAME.git"
+          DEST_URL="https://x-access-token:${DEST_TOKEN}@github.com/dxmohan/project1.git"
+          # https://${token}@github.com/dxmohan/project1.git
           
           echo "Pushing branch ${{ github.ref_name }}..."
           
