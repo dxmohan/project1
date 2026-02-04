@@ -41,6 +41,6 @@ jobs:
           
           # Push ONLY the current branch (not a full mirror)
           # git push "$DEST_URL" HEAD:${{ github.ref_name }}
-          git push https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project1.git releases/101010:releases/C101013
+          git push https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project1.git  releases/C101013
    
        
