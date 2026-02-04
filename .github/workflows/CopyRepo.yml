@@ -34,7 +34,7 @@ jobs:
           DEST_TOKEN: ${{ secrets.PAT_TOKEN1 }}
         run: |
           # UPDATE THIS URL
-          DEST_URL="https://x-access-token:${DEST_TOKEN}@github.com/dxmohan/project1.git"
+          DEST_URL="https://${DEST_TOKEN}@github.com/dxmohan/project1.git"
           # https://${token}@github.com/dxmohan/project1.git
           
           echo "Pushing branch ${{ github.ref_name }}..."
