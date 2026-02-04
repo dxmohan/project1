@@ -13,25 +13,32 @@ on:
 
 jobs:
   Copy-Repo-10-1-1-2:
+
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Checkout Source
+      - name: Checkout Source Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2. Configure Git
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+
+      # 3. Push to Destination
+      - name: Push to Destination
+        env:
+          DEST_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          # UPDATE THIS URL
+          DEST_URL="https://x-access-token:${DEST_TOKEN}@github.com/DEST_USERNAME/DEST_REPO_NAME.git"
+          
+          echo "Pushing branch ${{ github.ref_name }}..."
+          
+          # Push ONLY the current branch (not a full mirror)
+          git push "$DEST_URL" HEAD:${{ github.ref_name }}
    
-   runs-on: ubuntu2
-   steps:
-    - name: Copy files to remote server 10.1.1.2
-      run: |
-       echo "Branch: $GITHUB_REF_NAME"
-       # Add the upstream repository as a remote
-       git remote add upstream https://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@github.com/dxmohan/project1.git
-          
-       # Fetch all branches and tags from upstream
-       git fetch upstream
-          
-       # Checkout the branch you want to sync (e.g., main or master)
-       git checkout releases/C202020
-          
-       # Merge the upstream changes into your branch
-       # --ff-only ensures a fast-forward merge for linear history
-       git merge upstream/main --ff-only
-          
-       # Push the updated branch back to your fork
-       # The default GITHUB_TOKEN has permission to push to the repo
-       git push origin releases/C202020
+       
