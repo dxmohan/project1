@@ -7,7 +7,7 @@ on:
 jobs:
   Copy-Repo-10-1-1-2:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu2
     steps:
       - name: Checkout Source Repository
         uses: actions/checkout@v4
