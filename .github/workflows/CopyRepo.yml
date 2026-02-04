@@ -2,45 +2,40 @@ name: CopyRepo
 
 on:
   workflow_dispatch:
-    inputs:
-      repo_name:
-        description: 'Name of the repository to create'
-        required: true
-        default: 'my-new-repo'
-      description:
-        description: 'Description for the repository'
-        required: false
+    
 
 jobs:
   Copy-Repo-10-1-1-2:
 
     runs-on: ubuntu-latest
     steps:
-      # 1. Checkout Source
-      - name: Checkout Source Repo
+      - name: Checkout Source Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          repository: dxmohan/project4.git # Replace with your source repo
+          ref: releases/101010 # The branch to checkout
+          token: ${{ secrets.PAT_TOKEN1 }} # Use the PAT for necessary permissions
 
-      # 2. Configure Git
       - name: Configure Git
         run: |
-          git config --global user.name "GitHub Actions Bot"
-          git config --global user.email "actions@github.com"
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
 
-      # 3. Push to Destination
-      - name: Push to Destination
-        env:
-          DEST_TOKEN: ${{ secrets.PAT_TOKEN1 }}
+      - name: Make changes (example)
+        # Add your commands here to modify files as needed
         run: |
-          # UPDATE THIS URL
-          DEST_URL="https://${DEST_TOKEN}@github.com/dxmohan/project1.git"
-          # https://${token}@github.com/dxmohan/project1.git
+          echo "Sync completed at $(date)" > sync_status.txt
+          git add sync_status.txt
+          git commit -m "Automated sync changes"
+
+      - name: Push to Destination Repository
+        run: |
+          # Add the destination repository as a new remote
+          git remote add destination https://github.com/dxmohan/project1.git
           
-          echo "Pushing branch ${{ github.ref_name }}..."
-          
-          # Push ONLY the current branch (not a full mirror)
-          # git push "$DEST_URL" HEAD:${{ github.ref_name }}
-          git push https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project1.git  releases/C101013
+          # Push the changes to the destination repository using the PAT for authentication
+          # Use a variable to prevent the PAT from being exposed in logs
+          REPO_URL="https://${{ secrets.PAT_TOKEN1 }}@://github.com/dxmohan/project1.git"
+          git push $REPO_URL releases/101010:releases/C101013 # Push local main to remote main, replace branch names as needed
    
        
