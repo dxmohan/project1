@@ -21,12 +21,7 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
 
-      - name: Make changes (example)
-        # Add your commands here to modify files as needed
-        run: |
-          echo "Sync completed at $(date)" > sync_status.txt
-          git add sync_status.txt
-          git commit -m "Automated sync changes"
+     
 
       - name: Push to Destination Repository
         run: |
@@ -35,6 +30,9 @@ jobs:
           rm -rf project4/
           git clone  -b $GITHUB_REF_NAME https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project4.git
           cd project4
+          echo "Sync completed at $(date)" > sync_status.txt
+          git add sync_status.txt
+          git commit -m "Automated sync changes"
           git push https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project1.git $GITHUB_REF_NAME:$GITHUB_REF_NAME
           cd -
           
