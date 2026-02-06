@@ -33,9 +33,9 @@ jobs:
           #token=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
           echo $GITHUB_REF_NAME
           rm -rf project4/
-          git clone  -b releases/101010 https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project4.git
+          git clone  -b $GITHUB_REF_NAME https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project4.git
           cd project4
-          git push https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project1.git releases/101010:releases/C101013
+          git push https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project1.git $GITHUB_REF_NAME:$GITHUB_REF_NAME
           cd -
           
        
