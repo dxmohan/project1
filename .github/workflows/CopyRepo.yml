@@ -9,12 +9,12 @@ jobs:
 
     runs-on: ubuntu2
     steps:
-      - name: Checkout Source Repository
-        uses: actions/checkout@v4
-        with:
-          repository: dxmohan/project4.git # Replace with your source repo
-          ref: releases/101010 # The branch to checkout
-          token: ${{ secrets.PAT_TOKEN1 }} # Use the PAT for necessary permissions
+      #- name: Checkout Source Repository
+      #  uses: actions/checkout@v4
+      #  with:
+      #    repository: dxmohan/project4.git # Replace with your source repo
+      #    ref: releases/101010 # The branch to checkout
+      #    token: ${{ secrets.PAT_TOKEN1 }} # Use the PAT for necessary permissions
 
       - name: Configure Git
         run: |
@@ -30,12 +30,9 @@ jobs:
 
       - name: Push to Destination Repository
         run: |
-          # Add the destination repository as a new remote
-          git remote add destination https://github.com/dxmohan/project1.git
-          
-          # Push the changes to the destination repository using the PAT for authentication
-          # Use a variable to prevent the PAT from being exposed in logs
-          REPO_URL="https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project1.git"
-          git push $REPO_URL releases/101010:releases/C101013 # Push local main to remote main, replace branch names as needed
+          #token=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
+          git clone  -b releases/101010 https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project4.git
+          cd project4
+          git push https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project1.git releases/101010:releases/C101013
    
        
