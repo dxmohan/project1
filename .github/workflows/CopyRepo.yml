@@ -35,4 +35,5 @@ jobs:
           cd project4
           git push https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project1.git $GITHUB_REF_NAME:$GITHUB_REF_NAME
           cd -
+          rm -rf project4/
        
