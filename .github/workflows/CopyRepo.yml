@@ -22,7 +22,7 @@ jobs:
 
       - name: Push to Destination Repository
         run: |
-          #export HOME=/root
+          export HOME=/root
           git config --global user.name "Mohandass"
           git config --global user.email "dxmohan@gmail.com"
           
