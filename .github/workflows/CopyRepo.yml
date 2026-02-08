@@ -1,8 +1,8 @@
 name: CopyRepo
 
 on:
-   push:
-#  workflow_dispatch:
+#   push:
+  workflow_dispatch:
     
 
 jobs:
@@ -10,17 +10,8 @@ jobs:
 
     runs-on: ubuntu2
     steps:
-      #- name: Checkout Source Repository
-      #  uses: actions/checkout@v4
-      #  with:
-      #    repository: dxmohan/project4.git # Replace with your source repo
-      #    ref: releases/101010 # The branch to checkout
-      #    token: ${{ secrets.PAT_TOKEN1 }} # Use the PAT for necessary permissions
-
       
-
-     
-
+    
       - name: Push to Destination Repository
         run: |
           echo $GITHUB_REF_NAME
