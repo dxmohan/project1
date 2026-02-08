@@ -24,8 +24,8 @@ jobs:
         run: |
           echo $GITHUB_REF_NAME
           rm -rf project4/
-          git config user.name "Mohandass"
-          git config user.email "dxmohan@gmail.com"
+          #git config user.name "Mohandass"
+          #git config user.email "dxmohan@gmail.com"
           git clone  -b $GITHUB_REF_NAME https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project4.git
           cd project4
           git push https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project1.git $GITHUB_REF_NAME:$GITHUB_REF_NAME
