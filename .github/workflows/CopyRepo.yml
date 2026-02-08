@@ -16,16 +16,15 @@ jobs:
       #    ref: releases/101010 # The branch to checkout
       #    token: ${{ secrets.PAT_TOKEN1 }} # Use the PAT for necessary permissions
 
-      - name: Configure Git
-        run: |
-          git config user.name "Mohandass"
-          git config user.email "dxmohan@gmail.com"
+      
 
      
 
       - name: Push to Destination Repository
         run: |
-          #token=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
+          git config user.name "Mohandass"
+          git config user.email "dxmohan@gmail.com"
+          
           echo $GITHUB_REF_NAME
           rm -rf project4/
           git clone  -b $GITHUB_REF_NAME https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project4.git
