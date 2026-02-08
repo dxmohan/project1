@@ -1,7 +1,8 @@
 name: CopyRepo
 
 on:
-  workflow_dispatch:
+   push:
+#  workflow_dispatch:
     
 
 jobs:
