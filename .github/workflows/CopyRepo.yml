@@ -16,23 +16,18 @@ jobs:
       #    ref: releases/101010 # The branch to checkout
       #    token: ${{ secrets.PAT_TOKEN1 }} # Use the PAT for necessary permissions
 
-      - name: Configure Git
-        run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "actions@github.com"
+      
 
      
 
       - name: Push to Destination Repository
         run: |
-          #token=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
           echo $GITHUB_REF_NAME
           rm -rf project4/
+          git config user.name "Mohandass"
+          git config user.email "dxmohan@gmail.com"
           git clone  -b $GITHUB_REF_NAME https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project4.git
           cd project4
-          echo "Sync completed at $(date)" > sync_status.txt
-          git add sync_status.txt
-          git commit -m "Automated sync changes"
           git push https://${{ secrets.PAT_TOKEN1 }}@github.com/dxmohan/project1.git $GITHUB_REF_NAME:$GITHUB_REF_NAME
           cd -
           
