@@ -9,9 +9,7 @@ jobs:
   Copy-Repo-10-1-1-2:
 
     runs-on: ubuntu2
-    environment: 
-      name: production
-      url: https://example.com  # Optional: displays link in UI
+    
     steps:
       
     
